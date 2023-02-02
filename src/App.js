@@ -1,13 +1,13 @@
 import React from 'react'
 import NoteState from './context/NoteState'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './components/Home'
+import Signup from './components/Signup'
 export default function App() {
   return (
     <NoteState>
     <Router>
       <Routes>
-        <Route exact path='/' element={<Home />} />
+        <Route exact path='/' element={<Signup />} />
       </Routes>
     </Router>
     </NoteState>
