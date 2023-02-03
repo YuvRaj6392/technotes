@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -19,61 +18,82 @@ export default function Signup() {
     }
     else 
     {
-      alert('hooray')
+     const response=await fetch(`http://localhost:8080/api/signup`,{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify({
+        name:name,
+        email:email,
+        password:password
+      })
+
+     })
+     const json=await response.json();
+     console.log(json)
       setEmail("");
       setName("");
       setPassword("");
     }
   }
   return (
-    <div style={{ margin: 200 }}>
-      <form onSubmit={submitHandle}>
-        <div class="mb-3">
-          <label for="email" class="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            placeholder="name@example.com"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-        </div>
-        <div class="mb-3">
-          <label for="name" class="form-label">
-            Name
-          </label>
-          <input
-            class="form-control"
-            id="name"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          ></input>
-        </div>
-        <div class="mb-3">
-          <input type="submit" class="btn btn-primary btn-lg"></input>
-        </div>
-      </form>
-    </div>
+    <>
+    <h1 style={{textAlign:'center'}}>Sign-up</h1>
+ <div style={{ margin: 100 }}>
+    
+    <form onSubmit={submitHandle}>
+      <div className="mb-3">
+        <label htmlFor="email" className="form-label">
+          Email address
+        </label>
+        <input
+          type="email"
+          className="form-control"
+          id="email"
+          placeholder="name@example.com"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="name" className="form-label">
+          Name
+        </label>
+        <input
+          className="form-control"
+          id="name"
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="password" className="form-label">
+          Password
+        </label>
+        <input
+          type="password"
+          className="form-control"
+          id="password"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        ></input>
+      </div>
+      
+      <div className="mb-3" style={{marginRight:'20px'}} >
+        <input type="submit" className="btn btn-primary btn-lg"></input>
+      </div>
+     
+      
+    </form>
+  </div>
+    </>
+   
   );
 }
