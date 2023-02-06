@@ -1,6 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 export default function Navbar() {
+  const history=useNavigate();
+  const logout=()=>{
+    localStorage.removeItem('id');
+    localStorage.removeItem('token');
+    history('/login')
+  }
   return (
     <>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -24,7 +31,7 @@ export default function Navbar() {
       <Link style={{marginRight:10}} className='btn btn-success' to='/login' >Login</Link>  
       <Link className='btn btn-success' to='/signup' >Sign-up</Link>  
       </form>:
-      <button className='btn btn-danger'>Logout</button>
+      <button onClick={logout} className='btn btn-danger'>Logout</button>
       
       }
      
