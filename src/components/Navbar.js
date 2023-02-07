@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function Navbar() {
   const history=useNavigate();
   const logout=()=>{
-    localStorage.removeItem('id');
-    localStorage.removeItem('token');
+    localStorage.clear();
     history('/login')
   }
   return (
