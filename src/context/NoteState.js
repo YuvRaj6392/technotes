@@ -5,6 +5,7 @@ import React from 'react'
 export default function NoteState(props) {
     const initialNote=[];
     const [note,setNote]=useState(initialNote);
+    const [whoOnline,setWhoOnline]=useState([]);
 
     //calling the api to get all the notes from the user
     const getNotes=async ()=>{
@@ -41,9 +42,24 @@ export default function NoteState(props) {
       getNotes()
     }
     }
+
+    //api to see the list of online users
+    const onlineUsers=async ()=>{
+      const response = await fetch(`http://localhost:8080/api/usersOnline`,{
+        method:'GET',
+        headers:{
+          'Content-Type':'application/json',
+          'x-access-token':localStorage.getItem('token')
+        }
+      })
+      const json=await response.json();
+      await console.log(json.message)
+      await setWhoOnline(json.message)
+      
+    }
     
   return (
-    <noteContext.Provider value={{note,getNotes,uploadNotes}}>
+    <noteContext.Provider value={{note,whoOnline,getNotes,uploadNotes,onlineUsers}}>
     {props.children}
     </noteContext.Provider>
   )
