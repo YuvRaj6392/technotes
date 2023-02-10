@@ -3,9 +3,19 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 export default function Navbar() {
   const history=useNavigate();
-  const logout=()=>{
-    localStorage.clear();
-    history('/login')
+  const logout= async ()=>{
+    
+    await fetch(`http://localhost:8080/api/logout`,{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'x-access-token':localStorage.getItem('token')
+      }
+    })
+    await localStorage.clear();
+    await history('/login')
+
+    
   }
   return (
     <>
