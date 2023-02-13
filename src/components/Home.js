@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import noteContext from "../context/NoteContext";
 import { useNavigate } from "react-router-dom";
+import AddNote from "./AddNote";
 export default function Home() {
+
   const context = useContext(noteContext);
-  const { note, getNotes, uploadNotes, whoOnline, onlineUsers } = context;
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [tag, setTag] = useState("General");
+  const { note, getNotes, whoOnline, onlineUsers } = context;
+
   const history = useNavigate();
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -19,66 +19,15 @@ export default function Home() {
     // eslint-disable-next-line
   }, []);
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    uploadNotes(title, description, tag);
-    setTitle("");
-    setDescription("");
-    setTag("General");
-  };
+  
   return (
     <>
 
     
     <div className="container">
     <h1 style={{textAlign:'center',marginBottom:20}}>NoteHub</h1>
-      <form onSubmit={submitForm}>
-      <div className="mb-3">
-        <label  className="form-label">
-          Title
-        </label>
-        <input
-          className="form-control"
-          id="title"
-          value={title}
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-        />
-      </div>
-      <div className="mb-3">
-        <label  className="form-label">
-          Description
-        </label>
-        <textarea
-          className="form-control"
-         id="description"
-          value={description}
-          onChange={(e) => {
-            setDescription(e.target.value);
-          }}
-        ></textarea>
-      </div>
-      <div className="mb-3">
-        <label  className="form-label">
-          Tag
-        </label>
-        <input
-          className="form-control"
-          id="tag"
-          value={tag}
-          onChange={(e) => {
-            setTag(e.target.value);
-          }}
-        />
-      </div>
-      <div className="mb-3">
-          <button disabled={title.length<5 || description.length<5} type="submit" className="btn btn-primary">Upload</button>
-      </div>
-      </form>
-
-      
-<br /><br /><br />
+    <AddNote />
+    <br /><br />
       {note.map((ele) => {
         return (
           <div key={ele.id}>

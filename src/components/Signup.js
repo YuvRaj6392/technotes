@@ -56,6 +56,7 @@ export default function Signup() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
+              autoComplete='off'
             />
           </div>
           <div className="mb-3">
@@ -69,6 +70,7 @@ export default function Signup() {
               onChange={(e) => {
                 setName(e.target.value);
               }}
+              autoComplete='off'
             />
           </div>
           <div className="mb-3">

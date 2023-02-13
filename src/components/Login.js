@@ -47,6 +47,7 @@ export default function Login() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
+              autoComplete='off'
             />
           </div>
           <div className="mb-3">
