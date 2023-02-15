@@ -5,6 +5,7 @@ import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Home from "./components/Home";
+
 export default function App() {
   return (
     <NoteState>
