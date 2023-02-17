@@ -6,7 +6,7 @@ import WhoOnline from "./WhoOnline";
 import Notes from "./Notes";
 export default function Home() {
   const context = useContext(noteContext);
-  const { note, getNotes, whoOnline, onlineUsers, editNotes } = context;
+  const { note, getNotes, whoOnline, onlineUsers } = context;
 
   const history = useNavigate();
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function Home() {
         <br />
         <br />
         <h1>Your Notes</h1>
-        <Notes note={note} editNotes={editNotes}/>
+        <Notes note={note}/>
         <br />
         <br />
         <br />

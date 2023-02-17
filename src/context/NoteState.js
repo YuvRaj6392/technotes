@@ -77,9 +77,21 @@ export default function NoteState(props) {
      
       
     }
+
+    //api to delete the notes
+    const deleteNote=async (id)=>{
+      const response=await fetch(`http://localhost:8080/api/notes/${id}`,{
+        method:'DELETE',
+        header:{
+          'Content-Type':'application/json',
+          'x-access-token':localStorage.getItem('token')
+        }
+      })
+      await getNotes();
+    }
     
   return (
-    <noteContext.Provider value={{note,whoOnline,getNotes,uploadNotes,onlineUsers,editNotes}}>
+    <noteContext.Provider value={{note,whoOnline,getNotes,uploadNotes,onlineUsers,editNotes,deleteNote}}>
     {props.children}
     </noteContext.Provider>
   )
