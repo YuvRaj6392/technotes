@@ -87,6 +87,8 @@ export default function NoteState(props) {
           'x-access-token':localStorage.getItem('token')
         }
       })
+      const json=await response.json();
+      console.log(json)
       await getNotes();
     }
     
