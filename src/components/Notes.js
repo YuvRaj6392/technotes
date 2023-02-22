@@ -26,6 +26,7 @@ export default function Notes(props) {
   };
 
 const successfullEdit=()=>{
+editNotes(noteIdEdit,titleEdit,descriptionEdit,tagEdit)
 refClose.current.click();
 }
   return (
@@ -55,12 +56,12 @@ refClose.current.click();
               <h5 className="card-header">
                 {ele.title}
                 <i
-                  className="fa-solid fa-pen-to-square ms-5"
+                  className="fa-solid fa-pen-to-square ms-2"
                   onClick={() => editFunc(ele)}
                   style={{ cursor: "pointer" }}
                 ></i>
                 <i
-                  className="fa-solid fa-trash ms-5"
+                  className="fa-solid fa-trash ms-3"
                   onClick={() => deleteFunc(ele._id)}
                   style={{ cursor: "pointer" }}
                 ></i>
@@ -117,6 +118,7 @@ refClose.current.click();
                     id="descriptionEdit"
                     value={descriptionEdit}
                     rows="7"
+                    onChange={(e)=>setDescriptionEdit(e.target.value)}
                     
                   ></textarea>
                 </div>
@@ -126,6 +128,7 @@ refClose.current.click();
                     className="form-control"
                     id="tagEdit"
                     value={tagEdit}
+                    onChange={(e)=>setTagEdit(e.target.value)}
                   />
                 </div>
               </form>
@@ -139,7 +142,7 @@ refClose.current.click();
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary" onClick={successfullEdit}>
+              <button disabled={titleEdit.length<5 || descriptionEdit.length<5} type="button" className="btn btn-primary" onClick={successfullEdit}>
                 Edit
               </button>
             </div>
