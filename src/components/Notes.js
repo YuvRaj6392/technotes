@@ -22,7 +22,8 @@ export default function Notes(props) {
   };
 
   const deleteFunc = (id) => {
-    deleteNote(id);
+    
+     deleteNote(id);
   };
 
 const successfullEdit=()=>{
@@ -35,7 +36,7 @@ refClose.current.click();
         style={{
           display: "flex",
           flexWrap: "wrap",
-          justifyContent: "space-between",
+          justifyContent:"space-evenly",
           marginTop: 30,
         }}
       >
@@ -88,7 +89,7 @@ refClose.current.click();
         Launch demo modal
       </button>
 
-      <div className="modal" id="editModal" tabindex="-1">
+      <div className="modal" id="editModal" tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">

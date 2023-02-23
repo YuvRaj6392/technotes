@@ -53,7 +53,6 @@ export default function NoteState(props) {
         }
       })
       const json=await response.json();
-      await console.log(json.message)
       await setWhoOnline(json.message)
       
     }
@@ -82,13 +81,12 @@ export default function NoteState(props) {
     const deleteNote=async (id)=>{
       const response=await fetch(`http://localhost:8080/api/notes/${id}`,{
         method:'DELETE',
-        header:{
+        headers:{
           'Content-Type':'application/json',
           'x-access-token':localStorage.getItem('token')
         }
       })
       const json=await response.json();
-      console.log(json)
       await getNotes();
     }
     
