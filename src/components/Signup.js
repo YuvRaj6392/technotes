@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-export default function Signup() {
+export default function Signup(props) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -8,7 +8,7 @@ export default function Signup() {
   const submitHandle = async (e) => {
     e.preventDefault();
     if (!email || !name || !password) {
-      alert("Please enter all the fields!");
+      props.alertFunc("Please enter all the fields!",'danger')
     } else if (password.length <= 8) {
       alert("Length of the password should be greater than 8");
       
