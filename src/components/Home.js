@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import AddNote from "./AddNote";
 import WhoOnline from "./WhoOnline";
 import Notes from "./Notes";
-export default function Home() {
+import Alert from "./Alert";
+export default function Home(props) {
   const context = useContext(noteContext);
   const { note, getNotes, whoOnline, onlineUsers } = context;
-
+  const {alertFunc}=props
   const history = useNavigate();
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -23,18 +24,18 @@ export default function Home() {
     <>
       <div className="container">
         <h1 style={{ textAlign: "center", marginBottom: 20 }}>NoteHub</h1>
-        <AddNote />
+        <AddNote alertFunc={alertFunc} />
         <br />
         <br />
         <br />
         <h1>Your Notes</h1>
-        <Notes note={note}/>
+        <Notes note={note} alertFunc={alertFunc}/>
         <br />
         <br />
         <br />
         <h1>online users</h1>
 
-        <WhoOnline whoOnline={whoOnline} />
+        <WhoOnline whoOnline={whoOnline} alertFunc={alertFunc} />
       </div>
     </>
   );

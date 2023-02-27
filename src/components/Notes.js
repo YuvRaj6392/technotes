@@ -11,7 +11,7 @@ export default function Notes(props) {
   const [descriptionEdit, setDescriptionEdit] = useState("");
   const [tagEdit, setTagEdit] = useState("");
   const ref = useRef(null);
-  const refClose=useRef(null)
+  const refClose = useRef(null);
 
   const editFunc = (ele) => {
     ref.current.click();
@@ -22,21 +22,23 @@ export default function Notes(props) {
   };
 
   const deleteFunc = (id) => {
-    
-     deleteNote(id);
+    deleteNote(id);
+    window.scrollTo(0, 0);
+    props.alertFunc("Note has been deleted!", "success");
   };
 
-const successfullEdit=()=>{
-editNotes(noteIdEdit,titleEdit,descriptionEdit,tagEdit)
-refClose.current.click();
-}
+  const successfullEdit = () => {
+    editNotes(noteIdEdit, titleEdit, descriptionEdit, tagEdit);
+    refClose.current.click();
+    props.alertFunc("Note has been edited!", "success");
+  };
   return (
     <>
       <div
         style={{
           display: "flex",
           flexWrap: "wrap",
-          justifyContent:"space-evenly",
+          justifyContent: "space-evenly",
           marginTop: 30,
         }}
       >
@@ -119,8 +121,7 @@ refClose.current.click();
                     id="descriptionEdit"
                     value={descriptionEdit}
                     rows="7"
-                    onChange={(e)=>setDescriptionEdit(e.target.value)}
-                    
+                    onChange={(e) => setDescriptionEdit(e.target.value)}
                   ></textarea>
                 </div>
                 <div className="mb-3">
@@ -129,7 +130,7 @@ refClose.current.click();
                     className="form-control"
                     id="tagEdit"
                     value={tagEdit}
-                    onChange={(e)=>setTagEdit(e.target.value)}
+                    onChange={(e) => setTagEdit(e.target.value)}
                   />
                 </div>
               </form>
@@ -143,7 +144,12 @@ refClose.current.click();
               >
                 Close
               </button>
-              <button disabled={titleEdit.length<5 || descriptionEdit.length<5} type="button" className="btn btn-primary" onClick={successfullEdit}>
+              <button
+                disabled={titleEdit.length < 5 || descriptionEdit.length < 5}
+                type="button"
+                className="btn btn-primary"
+                onClick={successfullEdit}
+              >
                 Edit
               </button>
             </div>

@@ -8,9 +8,11 @@ export default function Signup(props) {
   const submitHandle = async (e) => {
     e.preventDefault();
     if (!email || !name || !password) {
+      window.scrollTo(0, 0);
       props.alertFunc("Please enter all the fields!",'danger')
     } else if (password.length <= 8) {
-      alert("Length of the password should be greater than 8");
+      window.scrollTo(0, 0);
+      props.alertFunc("Length of the password should be greater than 8",'danger')
       
     } else {
       const response = await fetch(`http://localhost:8080/api/signup`, {
@@ -34,7 +36,8 @@ export default function Signup(props) {
         setEmail("");
         setName("");
         setPassword("");
-        alert(json.message);
+        window.scrollTo(0, 0);
+        props.alertFunc(json.message,'success')
       }
     }
   };

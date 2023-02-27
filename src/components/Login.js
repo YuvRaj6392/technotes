@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-export default function Login() {
+export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useNavigate();
   const submitHandle = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      alert("Fill all the fields");
+      window.scrollTo(0, 0);
+      props.alertFunc('Fill all the fields!','danger')
     } else {
       const response = await fetch(`http://localhost:8080/api/login`, {
         method: "POST",
@@ -25,7 +26,8 @@ export default function Login() {
         localStorage.setItem("token", json.message.token);
         history("/");
       } else {
-        alert(json.message);
+        window.scrollTo(0, 0);
+        props.alertFunc(json.message,'success')
       }
     }
   };
