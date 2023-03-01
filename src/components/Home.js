@@ -19,6 +19,14 @@ export default function Home(props) {
     }
     // eslint-disable-next-line
   }, []);
+  
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      onlineUsers();
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <>
@@ -33,7 +41,7 @@ export default function Home(props) {
         <br />
         <br />
         <br />
-        <h1>online users</h1>
+        <h1>Global online users</h1>
 
         <WhoOnline whoOnline={whoOnline} alertFunc={alertFunc} />
       </div>
