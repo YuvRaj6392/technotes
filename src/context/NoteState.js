@@ -45,6 +45,7 @@ export default function NoteState(props) {
 
     //api to see the list of online users
     const onlineUsers=async ()=>{
+      
       const response = await fetch(`http://localhost:8080/api/usersOnline`,{
         method:'GET',
         headers:{
@@ -89,6 +90,7 @@ export default function NoteState(props) {
       const json=await response.json();
       await getNotes();
     }
+    
     
   return (
     <noteContext.Provider value={{note,whoOnline,getNotes,uploadNotes,onlineUsers,editNotes,deleteNote}}>
