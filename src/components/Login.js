@@ -10,7 +10,7 @@ export default function Login(props) {
       window.scrollTo(0, 0);
       props.alertFunc('Fill all the fields!','danger')
     } else {
-      const response = await fetch(`http://localhost:8080/api/login`, {
+      const response = await fetch(`https://technotes-api.onrender.com/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

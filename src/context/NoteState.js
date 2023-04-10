@@ -9,7 +9,7 @@ export default function NoteState(props) {
 
     //calling the api to get all the notes from the user
     const getNotes=async ()=>{
-      const response=await fetch(`http://localhost:8080/api/notes`,{
+      const response=await fetch(`https://technotes-api.onrender.com/api/notes`,{
         method:'GET',
         headers:{
           'Content-Type':'application/json',
@@ -28,7 +28,7 @@ export default function NoteState(props) {
         description:description,
         tag:tag
       })
-      const response=await fetch(`http://localhost:8080/api/notes`,{
+      const response=await fetch(`https://technotes-api.onrender.com/api/notes`,{
       method:'POST',
       headers:{
         'Content-Type':'application/json',
@@ -46,7 +46,7 @@ export default function NoteState(props) {
     //api to see the list of online users
     const onlineUsers=async ()=>{
       
-      const response = await fetch(`http://localhost:8080/api/usersOnline`,{
+      const response = await fetch(`https://technotes-api.onrender.com/api/usersOnline`,{
         method:'GET',
         headers:{
           'Content-Type':'application/json',
@@ -65,7 +65,7 @@ export default function NoteState(props) {
         description:description,
         tag:tag
       }
-      const response=await fetch(`http://localhost:8080/api/notes/${id}`,{
+      const response=await fetch(`https://technotes-api.onrender.com/api/notes/${id}`,{
         method:'PUT',
         headers:{
           'Content-Type':'application/json',
@@ -80,7 +80,7 @@ export default function NoteState(props) {
 
     //api to delete the notes
     const deleteNote=async (id)=>{
-      const response=await fetch(`http://localhost:8080/api/notes/${id}`,{
+      const response=await fetch(`https://technotes-api.onrender.com/api/notes/${id}`,{
         method:'DELETE',
         headers:{
           'Content-Type':'application/json',

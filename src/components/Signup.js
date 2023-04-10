@@ -15,7 +15,7 @@ export default function Signup(props) {
       props.alertFunc("Length of the password should be greater than 8",'danger')
       
     } else {
-      const response = await fetch(`http://localhost:8080/api/signup`, {
+      const response = await fetch(`https://technotes-api.onrender.com/api/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -6,6 +6,9 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Alert from "./components/Alert";
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
+
+if(process.env.NODE_ENV === 'production') disableReactDevTools()
 export default function App() {
   const [alert,setAlert]=useState("")
   const alertFunc=(message,color)=>{
