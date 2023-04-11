@@ -5,7 +5,7 @@ export default function Navbar() {
   const history=useNavigate();
   const logout= async ()=>{
     
-    await fetch(`https://technotes-api.onrender.com/api/logout`,{
+    await fetch(`https://technotes-api-u0ey.onrender.com/api/logout`,{
       method:'POST',
       headers:{
         'Content-Type':'application/json',
